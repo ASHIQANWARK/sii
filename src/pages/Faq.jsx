@@ -45,10 +45,10 @@ const FAQ = () => {
       </h2>
       <div className="max-w-3xl mx-auto px-4 space-y-6">
         {faqs.map((faq, index) => (
-          <div key={index} className="rounded-xl shadow-xl overflow-hidden bg-[#FF671F] transform transition-all duration-300 ease-in-out hover:scale-105">
+          <div key={index} className="rounded-xl shadow-xl overflow-hidden bg-[#005446] transform transition-all duration-300 ease-in-out hover:scale-105">
             <button
               onClick={() => handleToggle(index)}
-              className="w-full text-left font-semibold text-lg text-white py-6 px-8 bg-[#FF671F] focus:outline-none transition-all duration-300 ease-in-out"
+              className="w-full text-left font-semibold text-lg text-white py-6 px-8 [#005446] focus:outline-none transition-all duration-300 ease-in-out"
             >
               {faq.question}
             </button>

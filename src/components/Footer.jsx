@@ -4,7 +4,7 @@ import EComLogo from '../assets/images/siilogo-2.png'; // Adjust the path as nee
 
 const Footer = () => {
   return (
-    <footer className="bg-[#FF671F] text-white">
+    <footer className="bg-[#005446] text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Column 1: Logo */}
         <div className="flex justify-center md:justify-start">
@@ -68,7 +68,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#FF671F] py-4 text-center">
+      <div className="bg-[#005446] py-4 text-center">
         <p className="text-white text-sm">&copy; 2025 Ique Ventures. All rights reserved.</p>
       </div>
     </footer>

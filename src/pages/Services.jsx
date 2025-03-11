@@ -66,14 +66,14 @@ const Services = () => {
     return (
       <section className="py-20 ">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-[#FF671F] mb-12">
+          <h2 className="text-4xl font-bold text-center text-[#005446] mb-12">
             Our Services
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
                 <img src={service.img} alt={service.title} className="w-full h-48 object-cover" />
-                <div className="p-6 bg-[#FF671F] text-white flex-grow flex flex-col">
+                <div className="p-6 bg-[#005446] text-white flex-grow flex flex-col">
                   <h3 className="text-xl font-bold">{service.title}</h3>
                   <ul className="mt-2 list-disc list-inside space-y-2 flex-grow">
                     {service.description.map((point, idx) => (

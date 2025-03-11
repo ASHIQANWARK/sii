@@ -34,7 +34,7 @@ const useCountUp = (target, duration = 2000) => {
 
 const StatsSection = () => {
   return (
-    <section className="bg-gradient-to-r from-[#FF671F] to-[#FF4500] py-16 text-white">
+    <section className="bg-[#005446] py-16 text-white">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         
         {/* Left Content */}
@@ -73,7 +73,7 @@ const StatsSection = () => {
                   transition={{ duration: 0.3, type: "spring", stiffness: 150 }}
                 >
                   <motion.h3 
-                    className="text-5xl font-extrabold italic text-[#046A38]"
+                    className="text-5xl font-extrabold italic text-[#ff602b]"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}

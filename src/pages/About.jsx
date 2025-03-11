@@ -3,7 +3,7 @@ import careercounsellor from "../assets/images/careercounsellor.jpg"
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#FF671F] text-white py-20">
+    <section id="about" className="bg-[#005446]  text-white py-20">
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Left Side - Image */}
         <div className="w-full md:w-1/2 p-6">

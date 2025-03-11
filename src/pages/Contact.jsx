@@ -71,10 +71,10 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-16 bg-white overflow-x-hidden">
+    <section className="py-16 bg-[#005446] overflow-x-hidden">
       <div className="container mx-auto px-4 pt-4 max-w-full">
-        <h2 className="text-4xl font-bold text-center mb-4 text-[#FF671F] ">Contact Us</h2>
-        <p className="text-center text-xl mb-12 text-[#FF671F]">
+        <h2 className="text-4xl font-bold text-center mb-4 text-[#ffffff] ">Contact Us</h2>
+        <p className="text-center text-xl mb-12 text-[#ffffff]">
           Have questions or need assistance? We are just a message away.
         </p>
         
@@ -83,7 +83,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#FF671F] mr-4">
+              <div className="text-3xl text-[#005446] mr-4">
                 <i className="fas fa-globe"></i>
               </div>
               <div>
@@ -92,7 +92,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#FF671F] mr-4">
+              <div className="text-3xl text-[#005446] mr-4">
                 <i className="fas fa-phone-alt"></i>
               </div>
               <div>
@@ -101,7 +101,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#FF671F] mr-4">
+              <div className="text-3xl text-[#005446] mr-4">
                 <i className="fas fa-envelope"></i>
               </div>
               <div>
@@ -154,7 +154,7 @@ const Contact = () => {
               ></textarea>
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-[#FF671F] text-white text-lg font-semibold hover:bg-yellow-600 transition-colors"
+                className="w-full py-3 rounded-xl bg-[#005446] text-white text-lg font-semibold hover:bg-yellow-600 transition-colors"
               >
                 Send Message
               </button>
