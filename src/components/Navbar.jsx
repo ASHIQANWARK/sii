@@ -1,23 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 import Logo from "../assets/images/siilogo-2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation(); // Get current page route
-  const navigate = useNavigate(); // Programmatic navigation
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Handle scrolling effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Function to navigate to home and scroll to "about"
   const handleScrollToAbout = () => {
     if (location.pathname !== "/") {
-      navigate("/"); // Navigate to home first
+      navigate("/");
       setTimeout(() => {
         scroll.scrollTo(document.getElementById("about").offsetTop - 80, {
           duration: 800,
           smooth: true,
         });
-      }, 500); // Delay to ensure navigation completes before scrolling
+      }, 500);
     } else {
       scroll.scrollTo(document.getElementById("about").offsetTop - 80, {
         duration: 800,
@@ -27,7 +42,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-transparent ">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
@@ -39,23 +58,26 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-10 text-lg font-medium text-white ">
+        <div
+          className={`hidden md:flex space-x-10 text-lg font-medium ${
+            isScrolled ? "text-black" : "text-white"
+          }`}
+        >
           <Link
             to="/"
-            className="hover:text-white  transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className="hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
           >
             Home
           </Link>
-          
           <button
             onClick={handleScrollToAbout}
-            className="cursor-pointer hover:text-white  transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className="cursor-pointer hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
           >
             About
           </button>
           <Link
             to="/contact"
-            className="hover:text-white  transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className="hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
           >
             Contact
           </Link>
@@ -65,7 +87,9 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-[#000] focus:outline-none"
+            className={`focus:outline-none ${
+              isScrolled ? "text-black" : "text-white"
+            }`}
           >
             <svg
               className="w-7 h-7"
@@ -97,18 +121,18 @@ const Navbar = () => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } md:hidden bg-transparent backdrop-blur-md border-t-0 transform transition-all duration-300 ease-in-out font-serif`}
+        } md:hidden bg-white backdrop-blur-md border-t-0 transform transition-all duration-300 ease-in-out font-serif`}
       >
         <div className="px-6 py-4 space-y-4">
           <Link
             to="/"
-            className="block text-gray-700 hover:text-[#000] transform transition-transform duration-300 hover:scale-105 font-serif"
+            className="block text-gray-700 hover:text-black transform transition-transform duration-300 hover:scale-105 font-serif"
             onClick={() => setIsOpen(false)}
           >
             Home
           </Link>
           <button
-            className="block text-gray-700 hover:text-[#000] transform transition-transform duration-300 hover:scale-105 font-serif cursor-pointer"
+            className="block text-gray-700 hover:text-black transform transition-transform duration-300 hover:scale-105 font-serif cursor-pointer"
             onClick={() => {
               handleScrollToAbout();
               setIsOpen(false);
@@ -118,7 +142,7 @@ const Navbar = () => {
           </button>
           <Link
             to="/contact"
-            className="block text-gray-700 hover:text-[#000] transform transition-transform duration-300 hover:scale-105 font-serif"
+            className="block text-gray-700 hover:text-black transform transition-transform duration-300 hover:scale-105 font-serif"
             onClick={() => setIsOpen(false)}
           >
             Contact
