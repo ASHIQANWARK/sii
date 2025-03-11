@@ -1,13 +1,8 @@
 import React from "react";
 import Hero from "../pages/Hero";
-// import VisionMission from "../pages/VissionMission"; // Fixed filename
-// import WhyChooseUs from "../pages/WhyChooseUs";
-// import OurProcess from "../pages/OurProcess";
 import FAQ from "../pages/Faq";
-
 import ChatBot from "../components/Chatbot"; // Import the ChatBot component
 import About from "../pages/About";
-import Team from "../components/Team";
 import Services from "../pages/Services";
 import StatsSection from "./Statussection";
 import TopStates from "./Locations";
@@ -23,7 +18,7 @@ const Home = () => {
       <StatsSection />
       <TopStates />
       <FAQ />
-      <Team />
+      {/* <Team /> */}
       <ChatBot /> {/* Chatbot Component */}
     </div>
   );

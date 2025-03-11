@@ -1,34 +1,49 @@
-import React from 'react';
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import EComLogo from '../assets/images/siilogo-2.png'; // Adjust the path as needed
+import React from "react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaWhatsapp,
+  FaLinkedin,
+} from "react-icons/fa";
+import EComLogo from "../assets/images/siilogo-4.png"; // Adjust the path as needed
 
 const Footer = () => {
   return (
     <footer className="bg-[#005446] text-white">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
         {/* Column 1: Logo */}
         <div className="flex justify-center md:justify-start">
-          <img src={EComLogo} alt="Ique Ventures Logo" className="w-25" />
+          <img
+            src={EComLogo}
+            alt="Ique Ventures Logo"
+            className="w-40 h-auto object-contain"
+          />
         </div>
 
         {/* Column 2: Address, Email, Privacy Policy & Help Centre */}
         <div className="text-center md:text-left">
           <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
           <p className="text-white">
-            Address: Door No: 84, 3rd Cross Rd, KHB Block, Koramangala, Bengaluru, Karnataka 560095
+            Address: AL Shams Building 301, AL Sharq St - Qulaya'ah - Sharjah
           </p>
           <p className="text-white mt-2">
-            Email:{' '}
-            <a href="mailto:support@iqueventures.com" className="text-[#ffab00] hover:underline">
+            Email:{" "}
+            <a
+              href="mailto:support@iqueventures.com"
+              className="text-[#000000] hover:underline"
+            >
               support@iqueventures.com
             </a>
           </p>
           <p className="text-white mt-2">
-            <a href="/privacy-policy" className="text-[#ffab00] hover:underline">
+            <a
+              href="/privacy-policy"
+              className="text-[#000000] hover:underline"
+            >
               Privacy Policy
-            </a>{' '}
-            |{' '}
-            <a href="/help-centre" className="text-[#ffab00] hover:underline">
+            </a>{" "}
+            |{" "}
+            <a href="/help-centre" className="text-[#000000] hover:underline">
               Help Centre
             </a>
           </p>
@@ -41,9 +56,15 @@ const Footer = () => {
             <a href="#" className="text-[#1358f9] transition">
               <FaFacebookF size={24} />
             </a>
-            <a href="#" className="text-[#e82323] transition">
+            <a
+              href="https://www.instagram.com/studyinindia.com_?igsh=cmVpcDczenRhYTdn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#e82323] transition"
+            >
               <FaInstagram size={24} />
             </a>
+
             <a href="#" className="text-[#2bf00c] transition">
               <FaWhatsapp size={24} />
             </a>
@@ -68,8 +89,10 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#005446] py-4 text-center">
-        <p className="text-white text-sm">&copy; 2025 Ique Ventures. All rights reserved.</p>
+      <div className="bg-[#004437] py-4 text-center">
+        <p className="text-white text-sm">
+          &copy; 2025 Ique Ventures. All rights reserved.
+        </p>
       </div>
     </footer>
   );
