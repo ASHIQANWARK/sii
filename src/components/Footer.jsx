@@ -53,7 +53,7 @@ const Footer = () => {
         <div className="flex flex-col items-center">
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <div className="flex space-x-6">
-            <a href="#" className="text-[#1358f9] transition">
+            <a href="https://www.facebook.com/share/1C5z8Zk7dC/" className="text-[#1358f9] transition">
               <FaFacebookF size={24} />
             </a>
             <a
@@ -64,11 +64,7 @@ const Footer = () => {
             >
               <FaInstagram size={24} />
             </a>
-
-            <a href="#" className="text-[#2bf00c] transition">
-              <FaWhatsapp size={24} />
-            </a>
-            <a href="#" className="text-[#1358f9] transition">
+            <a href="https://www.linkedin.com/company/thestudyinindia-com/ " className="text-[#1358f9] transition">
               <FaLinkedin size={24} />
             </a>
           </div>
@@ -78,7 +74,7 @@ const Footer = () => {
         <div className="w-full flex justify-center md:justify-end">
           <iframe
             title="Google Maps"
-            src="https://www.google.com/maps?q=Koramangala,Bengaluru&output=embed"
+            src="https://www.google.com/maps?q=AL+Shams+Building+301,+AL+Sharq+St+-+Qulaya'ah,+Sharjah&output=embed"
             width="100%"
             height="180"
             className="rounded-lg shadow-lg max-w-md"
