@@ -55,25 +55,27 @@ const useCountUp = (target, duration = 2000) => {
 
 const StatsSection = () => {
   return (
-    <section className="bg-[#003B31] py-16 text-white">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+    <section className="bg-[#003B31] py-16 px-4 sm:px-8 md:px-16 text-white">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-10 md:space-y-0">
+        
         {/* Left Content */}
         <motion.div
-          className="md:w-1/2 space-y-8 text-center md:text-left"
+          className="md:w-1/2 space-y-6 text-center md:text-left"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
             Why Choose <span className="text-[#ff602b]">Us?</span>
           </h2>
-          <p className="text-lg text-gray-200 max-w-md">
+          <p className="text-lg text-gray-200 max-w-md mx-auto md:mx-0">
             We provide top-tier education opportunities with guaranteed admission success.
           </p>
 
+          {/* Stats Grid */}
           <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
             variants={{
@@ -88,13 +90,13 @@ const StatsSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="text-center p-6 rounded-xl shadow-lg  bg-opacity-10 backdrop-blur-md"
-                  whileHover={{ scale: 1.1, rotate: 1 }}
+                  className="text-center p-6 rounded-xl shadow-lg bg-opacity-10 backdrop-blur-md"
+                  whileHover={{ scale: 1.05, rotate: 1 }}
                   transition={{ duration: 0.3, type: "spring", stiffness: 150 }}
                   ref={ref}
                 >
                   <motion.h3
-                    className="text-4xl sm:text-5xl font-extrabold italic text-[#ff602b]"
+                    className="text-3xl sm:text-4xl font-extrabold italic text-[#ff602b]"
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -110,7 +112,7 @@ const StatsSection = () => {
 
         {/* Right Image */}
         <motion.div
-          className="md:w-1/2 mt-10 md:mt-0 flex justify-center"
+          className="md:w-1/2 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -119,7 +121,7 @@ const StatsSection = () => {
           <img
             src={statsImage}
             alt="Statistics"
-            className="w-full max-w-sm md:max-w-md rounded-lg shadow-2xl"
+            className="w-3/4 sm:w-2/3 md:w-2/3 lg:w-1/2 max-w-xs md:max-w-md rounded-lg shadow-2xl"
           />
         </motion.div>
       </div>

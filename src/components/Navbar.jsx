@@ -12,31 +12,28 @@ const Navbar = () => {
   // Handle scrolling effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Function to navigate to home and scroll to "about"
   const handleScrollToAbout = () => {
+    setIsOpen(false); // Close the menu on mobile
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
         scroll.scrollTo(document.getElementById("about").offsetTop - 80, {
           duration: 800,
-          smooth: true,
+          smooth: "easeInOutQuad",
         });
-      }, 500);
+      }, 300);
     } else {
       scroll.scrollTo(document.getElementById("about").offsetTop - 80, {
         duration: 800,
-        smooth: true,
+        smooth: "easeInOutQuad",
       });
     }
   };
@@ -58,70 +55,55 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div
-          className={`hidden md:flex space-x-10 text-lg font-medium ${
-            isScrolled ? "text-black" : "text-white"
-          }`}
-        >
+        <div className="hidden md:flex space-x-10 text-lg font-medium">
           <Link
             to="/"
-            className="hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className={`transition-all duration-300 ${
+              isScrolled ? "text-gray-800" : "text-white"
+            } hover:text-gray-700 font-serif`}
           >
             Home
           </Link>
           <button
             onClick={handleScrollToAbout}
-            className="cursor-pointer hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className={`cursor-pointer transition-all duration-300 ${
+              isScrolled ? "text-gray-800" : "text-white"
+            } hover:text-gray-700 font-serif`}
           >
             About
           </button>
           <Link
             to="/contact"
-            className="hover:text-gray-700 transition-all duration-300 ease-in-out transform hover:scale-105 font-serif"
+            className={`transition-all duration-300 ${
+              isScrolled ? "text-gray-800" : "text-white"
+            } hover:text-gray-700 font-serif`}
           >
             Contact
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`focus:outline-none ${
-              isScrolled ? "text-black" : "text-white"
-            }`}
-          >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`md:hidden focus:outline-none transition-all duration-300 ${
+            isScrolled ? "text-gray-800" : "text-white"
+          }`}
+        >
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </div>
 
       {/* Mobile Navigation Menu */}
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } md:hidden bg-white backdrop-blur-md border-t-0 transform transition-all duration-300 ease-in-out font-serif`}
+        } md:hidden absolute top-16 left-0 w-full bg-white shadow-md transition-all duration-300 ease-in-out`}
       >
         <div className="px-6 py-4 space-y-4">
           <Link
@@ -133,10 +115,7 @@ const Navbar = () => {
           </Link>
           <button
             className="block text-gray-700 hover:text-black transform transition-transform duration-300 hover:scale-105 font-serif cursor-pointer"
-            onClick={() => {
-              handleScrollToAbout();
-              setIsOpen(false);
-            }}
+            onClick={handleScrollToAbout}
           >
             About
           </button>

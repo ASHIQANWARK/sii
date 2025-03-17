@@ -38,7 +38,7 @@ const services = [
     description: [
       "Help with online and offline application submissions.",
       "Verification and submission of required documents.",
-      "Assistance with travel insurance"
+      "Assistance with travel insurance."
     ],
     img: Application,
   },
@@ -63,8 +63,8 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-20 bg-gray-100">
-      <div className="container mx-auto px-6">
+    <section className="py-16 bg-gray-100">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
         
         {/* Section Heading */}
         <motion.h2 
@@ -76,24 +76,24 @@ const Services = () => {
           Our Services
         </motion.h2>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-lg rounded-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-105"
+              className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
               {/* Image */}
-              <img src={service.img} alt={service.title} className="w-full h-64 object-cover" />
+              <img src={service.img} alt={service.title} className="w-full h-60 object-cover" />
 
               {/* Content */}
-              <div className="p-6 bg-[#005446] text-white flex-grow flex flex-col">
+              <div className="p-6 bg-[#005446] text-white flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-center">{service.title}</h3>
-                <ul className="mt-5 list-disc list-inside space-y-2 flex-grow">
+                <ul className="mt-4 list-disc list-inside space-y-2 flex-grow">
                   {service.description.map((point, idx) => (
                     <li key={idx}>{point}</li>
                   ))}
