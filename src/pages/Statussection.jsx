@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import statsImage from "../assets/images/siilogo-1.png"; // Ensure this path is correct
+import statsImage from "../assets/images/siilogo-1.png"; // Ensure correct path
 
 const stats = [
   { value: 100, label: "Partner Colleges" },
@@ -11,76 +10,98 @@ const stats = [
   { value: 24, label: "Student Support (Hours)" },
 ];
 
-// Function to animate numbers counting up
+// Number Counter Hook with Intersection Observer
 const useCountUp = (target, duration = 2000) => {
   const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    let start = 0;
-    const step = (timestamp) => {
-      start += (target / duration) * 50;
-      if (start < target) {
-        setCount(Math.floor(start));
-        requestAnimationFrame(step);
-      } else {
-        setCount(target);
-      }
-    };
-    requestAnimationFrame(step);
-  }, [target, duration]);
+  const ref = useRef(null);
+  const [start, setStart] = useState(false);
 
-  return count;
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStart(true);
+          observer.disconnect(); // Stop observing once triggered
+        }
+      },
+      { threshold: 0.6 } // Starts animation when 60% visible
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (start) {
+      let startTime;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        setCount(Math.floor(progress * target));
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          setCount(target); // Ensure it reaches the target
+        }
+      };
+      requestAnimationFrame(step);
+    }
+  }, [start, target, duration]);
+
+  return [count, ref];
 };
 
 const StatsSection = () => {
   return (
-    <section className="bg-[#005446] py-16 text-white">
+    <section className="bg-[#003B31] py-16 text-white">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-        
         {/* Left Content */}
-        <motion.div 
-          className="md:w-1/2 space-y-8"
+        <motion.div
+          className="md:w-1/2 space-y-8 text-center md:text-left"
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold text-white leading-tight">
-            Why Choose Us?
+          <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+            Why Choose <span className="text-[#ff602b]">Us?</span>
           </h2>
-          <p className="text-lg text-white">
+          <p className="text-lg text-gray-200 max-w-md">
             We provide top-tier education opportunities with guaranteed admission success.
           </p>
 
-          <motion.div 
-            className="grid grid-cols-2 gap-8"
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-3 gap-6"
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
             variants={{
               hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 }
-              }
+              visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
             }}
+            viewport={{ once: true }}
           >
             {stats.map((stat, index) => {
-              const count = useCountUp(stat.value, 1500);
+              const [count, ref] = useCountUp(stat.value, 1500);
+
               return (
-                <motion.div 
-                  key={index} 
-                  className="text-center p-6 rounded-xl"
-                  whileHover={{ scale: 1.15, rotate: 2 }}
+                <motion.div
+                  key={index}
+                  className="text-center p-6 rounded-xl shadow-lg  bg-opacity-10 backdrop-blur-md"
+                  whileHover={{ scale: 1.1, rotate: 1 }}
                   transition={{ duration: 0.3, type: "spring", stiffness: 150 }}
+                  ref={ref}
                 >
-                  <motion.h3 
-                    className="text-5xl font-extrabold italic text-[#ff602b]"
+                  <motion.h3
+                    className="text-4xl sm:text-5xl font-extrabold italic text-[#ff602b]"
                     initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                   >
                     {count}+
                   </motion.h3>
-                  <p className="text-lg text-white font-semibold">{stat.label}</p>
+                  <p className="text-md sm:text-lg text-white font-semibold">{stat.label}</p>
                 </motion.div>
               );
             })}
@@ -88,19 +109,19 @@ const StatsSection = () => {
         </motion.div>
 
         {/* Right Image */}
-        <motion.div 
+        <motion.div
           className="md:w-1/2 mt-10 md:mt-0 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
-          <img 
-            src={statsImage} 
-            alt="Statistics" 
-            className="w-full max-w-md rounded-lg shadow-lg"
+          <img
+            src={statsImage}
+            alt="Statistics"
+            className="w-full max-w-sm md:max-w-md rounded-lg shadow-2xl"
           />
         </motion.div>
-
       </div>
     </section>
   );

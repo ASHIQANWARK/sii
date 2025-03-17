@@ -32,7 +32,7 @@ const Footer = () => {
               href="mailto:support@iqueventures.com"
               className="text-[#000000] hover:underline"
             >
-              support@iqueventures.com
+              info@studyinindia.com 
             </a>
           </p>
           <p className="text-white mt-2">

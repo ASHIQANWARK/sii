@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Admission from "../assets/images/admisssion.jpg";
+import Admission from "../assets/images/IMG_1386.jpg";
 import NRIQuota from "../assets/images/nri.png";
 import EntranceExam from "../assets/images/entrance.jpg";
 import Application from "../assets/images/application.jpg";
@@ -88,12 +88,12 @@ const Services = () => {
               whileHover={{ scale: 1.05 }}
             >
               {/* Image */}
-              <img src={service.img} alt={service.title} className="w-full h-48 object-cover" />
+              <img src={service.img} alt={service.title} className="w-full h-64 object-cover" />
 
               {/* Content */}
               <div className="p-6 bg-[#005446] text-white flex-grow flex flex-col">
                 <h3 className="text-xl font-bold text-center">{service.title}</h3>
-                <ul className="mt-4 list-disc list-inside space-y-2 flex-grow">
+                <ul className="mt-5 list-disc list-inside space-y-2 flex-grow">
                   {service.description.map((point, idx) => (
                     <li key={idx}>{point}</li>
                   ))}
