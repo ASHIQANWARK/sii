@@ -63,12 +63,10 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-[#003B31]">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        
-        {/* Section Heading */}
-        <motion.h2 
-          className="text-4xl md:text-5xl font-extrabold text-center text-[#005446] mb-12 drop-shadow-lg"
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12 drop-shadow-lg"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -76,31 +74,42 @@ const Services = () => {
           Our Services
         </motion.h2>
 
-        {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              {/* Image */}
-              <img src={service.img} alt={service.title} className="w-full h-60 object-cover" />
+          {services.map((service, index) => {
+            const isOdd = index % 2 !== 0;
 
-              {/* Content */}
-              <div className="p-6 bg-[#005446] text-white flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-center">{service.title}</h3>
-                <ul className="mt-4 list-disc list-inside space-y-2 flex-grow">
-                  {service.description.map((point, idx) => (
-                    <li key={idx}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={index}
+                className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-2xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className={`flex ${isOdd ? "flex-col-reverse" : "flex-col"} h-full`}>
+                  {/* Image Section */}
+                  <div className="h-60 w-full">
+                    <img
+                      src={service.img}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="flex-1 p-6 bg-[#005446] text-white flex flex-col justify-between">
+                    <h3 className="text-xl font-bold text-center">{service.title}</h3>
+                    <ul className="mt-4 list-disc list-inside space-y-2 text-sm text-gray-200">
+                      {service.description.map((point, idx) => (
+                        <li key={idx}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

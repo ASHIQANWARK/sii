@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const About = () => {
   return (
-    <section id="about" className="relative bg-[#004d40] text-white py-16 px-4 sm:px-8 md:px-12">
+    <section id="about" className="relative bg-[#003B31] text-white py-16 px-4 sm:px-8 md:px-12">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
         
         {/* Animated Heading */}

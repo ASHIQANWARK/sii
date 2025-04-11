@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import heroBg1 from "../assets/images/webvideo2.mp4"; // Ensure correct path
+import heroBg1 from "../assets/images/herovideo.mp4";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -23,16 +23,16 @@ const Hero = () => {
         </video>
       </div>
 
-      {/* Content */}
+      {/* Hero Content */}
       <motion.div
-        className="relative z-10 bg-transparent bg-opacity-10  p-8 sm:p-12 md:p-16 rounded-xl text-white max-w-4xl flex flex-col items-center text-center"
+        className="relative z-10 p-6 sm:p-12 md:p-16 max-w-4xl flex flex-col items-center text-white"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.h1
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"
-          style={{ textShadow: "4px 4px 20px rgba(0, 0, 0, 0.9)" }}
+          style={{ textShadow: "4px 4px 20px rgba(0, 0, 0, 0.8)" }}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
@@ -43,7 +43,7 @@ const Hero = () => {
 
         <motion.p
           className="text-lg sm:text-xl opacity-90 mb-6 px-4 sm:px-6 max-w-3xl"
-          style={{ textShadow: "2px 2px 12px rgba(0, 0, 0, 0.5)" }}
+          style={{ textShadow: "2px 2px 12px rgba(0, 0, 0, 0.6)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}

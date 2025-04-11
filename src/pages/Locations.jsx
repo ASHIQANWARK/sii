@@ -17,9 +17,9 @@ const states = [
 
 const TopStates = () => {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-[#003B31]">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-10 text-white">
           Top States for Admissions
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

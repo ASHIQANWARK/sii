@@ -39,8 +39,8 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-16 bg-white font-serif">
-      <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12 tracking-tight">
+    <section className="py-16 bg-[#003B31] font-serif">
+      <h2 className="text-4xl font-extrabold text-center text-white mb-12 tracking-tight">
         Frequently Asked Questions on Indian Admission
       </h2>
       <div className="max-w-3xl mx-auto px-4 space-y-6">
