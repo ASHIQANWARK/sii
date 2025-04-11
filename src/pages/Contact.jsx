@@ -4,7 +4,10 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    academicBackground: "",
+    preferredCategory: "",
+    specificCourse: "",
+    preferredLocation: "",
     message: "",
   });
 
@@ -14,94 +17,146 @@ const Contact = () => {
 
   const sendWhatsAppMessage = (e) => {
     e.preventDefault();
-    const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}`;
+    const whatsappMessage =
+      `Name: ${formData.name}%0A` +
+      `Email: ${formData.email}%0A` +
+      `Academic Background: ${formData.academicBackground}%0A` +
+      `Preferred Course Category: ${formData.preferredCategory}%0A` +
+      `Specific Course: ${formData.specificCourse}%0A` +
+      `Preferred Location: ${formData.preferredLocation}%0A` +
+      `Message: ${formData.message}`;
+
     window.open(`https://wa.me/+971545162699?text=${whatsappMessage}`, "_blank");
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-[#061428] to-[#0b1c3a] overflow-x-hidden">
-      <div className="container mx-auto px-4 pt-4 max-w-full">
-        <h2 className="text-4xl font-bold text-center mb-4 text-white heading-font">
-          Contact Us
+    <section className="py-16 bg-[#003B31]">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <h2 className="text-4xl font-bold text-center mb-4 text-white">
+          Find the Right College for You
         </h2>
-        <p className="text-center text-xl mb-12 text-gray-300 body-font">
-          Have questions or need assistance? We are just a message away.
+        <p className="text-center text-xl mb-12 text-gray-300">
+          Share your preferences and we’ll help match you with the best colleges in India.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Contact Info */}
           <div className="space-y-8">
-            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
-                <i className="fas fa-globe"></i>
+            {[
+              {
+                icon: "fas fa-globe",
+                title: "Visit Us",
+                detail: "www.thestudyinindia.com",
+              },
+              {
+                icon: "fas fa-phone-alt",
+                title: "Call Us",
+                detail: "+971545162699",
+              },
+              {
+                icon: "fas fa-envelope-open-text",
+                title: "Email Us",
+                detail: "info@studyinindia.com",
+              },
+            ].map(({ icon, title, detail }, index) => (
+              <div
+                key={index}
+                className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md"
+              >
+                <div className="text-3xl text-[#003B31] mr-4">
+                  <i className={icon}></i>
+                </div>
+                <div>
+                  <h5 className="font-bold text-lg">{title}</h5>
+                  <p className="text-lg">{detail}</p>
+                </div>
               </div>
-              <div>
-                <h5 className="font-bold text-lg heading-font">Visit Us</h5>
-                <p className="text-lg">www.thestudyinindia.com</p>
-              </div>
-            </div>
-            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
-                <i className="fas fa-phone-alt"></i>
-              </div>
-              <div>
-                <h5 className="font-bold text-lg">Call Us</h5>
-                <p className="text-lg font-sans">+971545162699</p>
-              </div>
-            </div>
-            <div className="flex items-center p-6 rounded-xl shadow-xl bg-white bg-opacity-40 backdrop-blur-md">
-              <div className="text-3xl text-[#1d375f] mr-4">
-                <i className="fas fa-envelope-open-text"></i>
-              </div>
-              <div>
-                <h5 className="font-bold text-lg heading-font">Email Us</h5>
-                <p className="text-lg">info@studyinindia.com</p>
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div>
-            <div className="bg-white p-8 rounded-xl shadow-xl bg-opacity-80 backdrop-blur-md">
+          {/* Contact Form */}
+          <div className="flex justify-center items-center">
+            <div className="w-full max-w-2xl bg-white p-8 rounded-xl shadow-xl bg-opacity-90 backdrop-blur-md border border-gray-300">
               <form onSubmit={sendWhatsAppMessage} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input
                     type="text"
                     name="name"
-                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
-                    placeholder="Your Name"
+                    placeholder="Full Name"
                     required
                     value={formData.name}
                     onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
                   />
                   <input
                     type="email"
                     name="email"
-                    className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
-                    placeholder="Your Email"
+                    placeholder="Email Address"
                     required
                     value={formData.email}
                     onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
                   />
                 </div>
+
                 <input
                   type="text"
-                  name="subject"
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
-                  placeholder="Subject"
+                  name="academicBackground"
+                  placeholder="Academic Background (e.g. 12th, IB, etc.)"
                   required
-                  value={formData.subject}
+                  value={formData.academicBackground}
                   onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
                 />
+
+                <select
+                  name="preferredCategory"
+                  required
+                  value={formData.preferredCategory}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
+                >
+                  <option value="">Select Course Category</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Medical/Health Sciences">Medical/Health Sciences</option>
+                  <option value="Business/Commerce">Business/Commerce</option>
+                  <option value="Arts & Humanities">Arts & Humanities</option>
+                  <option value="Science">Science</option>
+                  <option value="Law">Law</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <input
+                  type="text"
+                  name="specificCourse"
+                  placeholder="Specific Course (e.g. B.Tech CSE, BBA)"
+                  required
+                  value={formData.specificCourse}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
+                />
+
+                <input
+                  type="text"
+                  name="preferredLocation"
+                  placeholder="Preferred Study Location (optional)"
+                  value={formData.preferredLocation}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
+                />
+
                 <textarea
                   name="message"
-                  className="border border-gray-300 rounded-xl px-4 py-3 w-full focus:ring-2 focus:ring-[#1d375f] transition-all"
                   rows="4"
-                  placeholder="Your Message"
-                  required
+                  placeholder="Additional Notes or Questions"
                   value={formData.message}
                   onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003B31]"
                 ></textarea>
+
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-[#1d375f] text-white text-lg font-semibold hover:bg-[#162d4f] transition-colors"
+                  className="w-full py-3 rounded-xl bg-[#003B31] text-white text-lg font-semibold hover:bg-[#005446] transition-colors"
                 >
                   Send via WhatsApp
                 </button>
