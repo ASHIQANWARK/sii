@@ -9,7 +9,7 @@ import EComLogo from "../assets/images/siilogo-4.png"; // Adjust the path as nee
 
 const Footer = () => {
   return (
-    <footer className="bg-[#005446] text-white">
+    <footer className="bg-[#003B31] text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
         {/* Column 1: Logo */}
         <div className="flex justify-center md:justify-start">
@@ -30,7 +30,7 @@ const Footer = () => {
             Email:{" "}
             <a
               href="mailto:support@iqueventures.com"
-              className="text-[#000000] hover:underline"
+              className="text-[#ffffff] hover:underline"
             >
               info@studyinindia.com 
             </a>
@@ -38,12 +38,12 @@ const Footer = () => {
           <p className="text-white mt-2">
             <a
               href="/privacy-policy"
-              className="text-[#000000] hover:underline"
+              className="text-[#ffffff] hover:underline"
             >
               Privacy Policy
             </a>{" "}
             |{" "}
-            <a href="/help-centre" className="text-[#000000] hover:underline">
+            <a href="/help-centre" className="text-[#ffffff] hover:underline">
               Help Centre
             </a>
           </p>
@@ -85,7 +85,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#004437] py-4 text-center">
+      <div className="bg-[#003B31] py-4 text-center">
         <p className="text-white text-sm">
           &copy; 2025 Ique Ventures. All rights reserved.
         </p>
