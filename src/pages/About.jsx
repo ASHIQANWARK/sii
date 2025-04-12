@@ -44,18 +44,7 @@ const About = () => {
           With a deep understanding of the admission process, entrance exams, and NRI quota requirements, we ensure a smooth and stress-free transition to higher education in India.
         </motion.p>
 
-        {/* WhatsApp Button */}
-        <motion.a
-          href="https://wa.me/971526608928"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 px-6 py-3 text-lg font-bold rounded-lg shadow-lg bg-[#25D366] text-white flex items-center justify-center gap-2 transition-all duration-300 hover:bg-[#1EBE57] hover:scale-105"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaWhatsapp size={24} />
-          Get Free Career Counseling Now
-        </motion.a>
+        
       </div>
     </section>
   );

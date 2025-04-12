@@ -7,12 +7,14 @@ import Services from "../pages/Services";
 import StatsSection from "./Statussection";
 import TopStates from "./Locations";
 import VisionMission from "./Vissionmission";
+import ConsultationForm from "./CounsellingForm";
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <About />
+      <ConsultationForm />
       <VisionMission />
       <Services />
       <StatsSection />

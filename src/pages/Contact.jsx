@@ -17,16 +17,19 @@ const Contact = () => {
 
   const sendWhatsAppMessage = (e) => {
     e.preventDefault();
+
     const whatsappMessage =
-      `Name: ${formData.name}%0A` +
-      `Email: ${formData.email}%0A` +
-      `Academic Background: ${formData.academicBackground}%0A` +
-      `Preferred Course Category: ${formData.preferredCategory}%0A` +
-      `Specific Course: ${formData.specificCourse}%0A` +
-      `Preferred Location: ${formData.preferredLocation}%0A` +
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Academic Background: ${formData.academicBackground}\n` +
+      `Preferred Course Category: ${formData.preferredCategory}\n` +
+      `Specific Course: ${formData.specificCourse}\n` +
+      `Preferred Location: ${formData.preferredLocation}\n` +
       `Message: ${formData.message}`;
 
-    window.open(`https://wa.me/+971545162699?text=${whatsappMessage}`, "_blank");
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    window.open(`https://wa.me/+971545162699?text=${encodedMessage}`, "_blank");
   };
 
   return (
